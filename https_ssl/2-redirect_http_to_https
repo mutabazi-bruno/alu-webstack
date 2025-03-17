@@ -1,0 +1,14 @@
+frontend http_front
+    bind *:80
+    http-request redirect scheme https code 301 unless { ssl_fc }
+    default_backend http_back
+
+frontend https_front
+    bind *:443 ssl crt /etc/haproxy/certs/www.gloire.tech.pem
+    http-request set-header X-Forwarded-Proto https
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server 6435-web-01 3.80.145.4:80 check
+    server 6435-web-02 18.212.49.58:80 check
