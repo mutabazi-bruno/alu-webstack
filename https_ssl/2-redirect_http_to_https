@@ -10,5 +10,5 @@ frontend https_front
 
 backend http_back
     balance roundrobin
-    server 6435-web-01 3.80.145.4:80 check
-    server 6435-web-02 18.212.49.58:80 check
+    server 6453-web-01 54.197.83.77:80 check
+    server 6453-web-02 44.201.246.2:80 check
